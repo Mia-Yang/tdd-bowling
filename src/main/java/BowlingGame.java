@@ -10,10 +10,12 @@ public class BowlingGame {
                 score += MAX_SCORE + rolls[rollIndex + 2] + rolls[rollIndex + 3];
             } else if (isSpare(rolls, rollIndex)) {
                 score += MAX_SCORE + rolls[rollIndex + 2];
-            } else if (i == 9 && isStrike(rolls[rollIndex])){
+            } else if (i == 9 && isStrike(rolls[rollIndex])) {
                 score += MAX_SCORE + rolls[rollIndex + 1] + rolls[rollIndex + 2];
+            } else if (i == 9 && isSpare(rolls, rollIndex)) {
+                score += MAX_SCORE + rolls[rollIndex + 2];
             } else {
-            score += rolls[rollIndex] + rolls[rollIndex + 1];
+                score += rolls[rollIndex] + rolls[rollIndex + 1];
             }
             rollIndex += 2;
         }
