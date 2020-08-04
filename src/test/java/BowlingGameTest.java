@@ -26,5 +26,12 @@ public class BowlingGameTest {
         assertEquals(game.getScore(rolls), expectedScore);
     }
 
+    @Test
+    void should_calculate_score_when_there_is_a_spare_before_10th_frame() {
+        int expectedScore = 50;
+        int[] rolls = {0, 1, 5, 5, 4, 4, 5, 0, 0, 7, 0, 0, 5, 1, 8, 1, 0, 0, 0, 0};
+        assertEquals(game.getScore(rolls), expectedScore);
+    }
+
 
 }
