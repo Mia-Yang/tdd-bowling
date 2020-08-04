@@ -7,45 +7,16 @@ public class BowlingGameTest {
 
     @Test
     void should_have_zero_score_when_rolling_zero_each_roll() {
-        int rolls = 20;
-        int pins = 0;
         int expectedScore = 0;
-        rollNTimes(rolls, pins);
-        assertEquals(game.getScore(), expectedScore);
+        int[] rolls = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        assertEquals(game.getScore(rolls), expectedScore);
     }
 
     @Test
-    void rolling_one_each_role_should_have_twenty_score() {
-        int rolls = 20;
-        int pins = 1;
-        int expectedScore = 20;
-        rollNTimes(rolls, pins);
-        assertEquals(game.getScore(), expectedScore);
+    void should_calculate_score_when_there_is_no_strike_and_spare() {
+        int expectedScore = 32;
+        int[] rolls = {0, 1, 0, 0, 0, 4, 5, 0, 0, 7, 0, 0, 5, 1, 8, 1, 0, 0, 0, 0};
+        assertEquals(game.getScore(rolls), expectedScore);
     }
 
-    @Test
-    void should_calculate_score_when_meeting_a_spare() {
-        int expectedScore = 18;
-        game.roll(4);
-        game.roll(6);//spare
-        game.roll(4);
-        rollNTimes(17, 0);
-        assertEquals(game.getScore(), expectedScore);
-    }
-
-    @Test
-    void should_calculate_socre_when_meeting_strike() {
-        game.roll(10);//strike
-        game.roll(5);
-        game.roll(4);
-        rollNTimes(17, 0);
-        int expectedScore = 28;
-        assertEquals(game.getScore(), expectedScore);
-    }
-
-    private void rollNTimes(int times, int pins) {
-        for (int i = 0; i < times; i++) {
-            game.roll(pins);
-        }
-    }
 }
