@@ -22,7 +22,6 @@ public class BowlingGame {
                 score += rolls[rollIndex] + rolls[rollIndex + 1];
                 rollIndex += 2;
             }
-
         }
         return score;
     }

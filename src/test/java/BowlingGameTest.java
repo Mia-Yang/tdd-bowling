@@ -33,6 +33,16 @@ public class BowlingGameTest {
         assertEquals(game.getScore(), expectedScore);
     }
 
+    @Test
+    void should_calculate_socre_when_meeting_strike() {
+        game.roll(10);//strike
+        game.roll(5);
+        game.roll(4);
+        rollNTimes(17, 0);
+        int expectedScore = 28;
+        assertEquals(game.getScore(), expectedScore);
+    }
+
     private void rollNTimes(int times, int pins) {
         for (int i = 0; i < times; i++) {
             game.roll(pins);
